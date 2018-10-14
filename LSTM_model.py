@@ -3,7 +3,7 @@ import tensorflow as tf
 from datapreparation import DataPreparation
 import numpy as np
 
-start = "2007-01-01"
+start = "2015-03-01"
 end = "2018-03-01"
 
 sp.get_stock_data("AAPL", start_date=start, end_date=end)
@@ -11,9 +11,11 @@ data = DataPreparation("stock_prices.csv", 0.9)
 data.gen_test(10)
 data.gen_train(10)
 
+print(data.X_train)
 x,y = data.X_train.shape
 X_train = data.X_train.reshape((x, y, 1)) / 200
 Y_train = data.Y_train / 200
+print(data.X_train)
 
 x,y = data.X_test.shape
 X_test = data.X_test.reshape(x, y, 1) / 200
